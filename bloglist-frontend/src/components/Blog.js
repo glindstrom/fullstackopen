@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 
 const Blog = ({ blog, increaseLikes, remove, user }) => {
-  console.log('blog:', blog)
-  console.log('user:', user)
   const [visible, setVisible] = useState(false)
   const showDetails = { display: visible ? '' : 'none' }
   const showRemove = {
