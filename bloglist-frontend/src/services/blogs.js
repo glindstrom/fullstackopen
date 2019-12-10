@@ -16,6 +16,14 @@ const create = async newBlog => {
   return response.data
 }
 
+const remove = async id => {
+  const config = {
+    headers: { Authorization: token }
+  }
+
+  await axios.delete(`${baseUrl}/${id}`, config)
+}
+
 const getAll = () => {
   const request = axios.get(baseUrl)
   return request.then(response => response.data)
@@ -37,4 +45,4 @@ const increaseLikes = async blog => {
   return response.data
 }
 
-export default { getAll, create, increaseLikes, setToken }
+export default { getAll, create, remove, increaseLikes, setToken }

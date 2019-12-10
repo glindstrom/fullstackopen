@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 
-const Blog = ({ blog, increaseLikes }) => {
+const Blog = ({ blog, increaseLikes, remove, user }) => {
+  console.log('blog:', blog)
+  console.log('user:', user)
   const [visible, setVisible] = useState(false)
   const showDetails = { display: visible ? '' : 'none' }
+  const showRemove = {
+    display: blog.user.username === user.username ? '' : 'none'
+  }
 
   const blogStyle = {
     paddingTop: 10,
@@ -23,6 +28,9 @@ const Blog = ({ blog, increaseLikes }) => {
           {blog.likes} likes <button onClick={increaseLikes}>like</button>
         </div>
         <div>added by {blog.user.name}</div>
+        <button style={showRemove} onClick={remove}>
+          remove
+        </button>
       </div>
     </div>
   )
