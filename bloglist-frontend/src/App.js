@@ -40,7 +40,6 @@ const App = () => {
 
   const clearMessages = () => {
     setTimeout(() => {
-      console.log('Clearing messages...')
       setErrorMessage(null)
       setMessage(null)
     }, 5000)
@@ -65,6 +64,11 @@ const App = () => {
       resetBlogForm()
       clearMessages()
     })
+  }
+
+  const increaseLikes = blog => async () => {
+    const updatedBlog = await blogService.increaseLikes(blog)
+    setBlogs(blogs.map(b => (b.id === updatedBlog.id ? updatedBlog : b)))
   }
 
   const handleLogin = async event => {
@@ -140,7 +144,7 @@ const App = () => {
         />
       </Togglable>
       {blogs.map(blog => (
-        <Blog key={blog.id} blog={blog} />
+        <Blog key={blog.id} blog={blog} increaseLikes={increaseLikes(blog)} />
       ))}
     </div>
   )
