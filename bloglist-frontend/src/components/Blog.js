@@ -17,10 +17,10 @@ const Blog = ({ blog, increaseLikes, remove, user }) => {
 
   return (
     <div style={blogStyle}>
-      <div onClick={() => setVisible(!visible)}>
+      <div className="info" onClick={() => setVisible(!visible)}>
         {blog.title} {blog.author}
       </div>
-      <div style={showDetails}>
+      <div className="details" style={showDetails}>
         <div>{blog.url}</div>
         <div>
           {blog.likes} likes <button onClick={increaseLikes}>like</button>
