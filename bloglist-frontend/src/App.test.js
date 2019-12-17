@@ -9,7 +9,24 @@ describe('<App />', () => {
 
     await waitForElement(() => component.getByText('login'))
 
-    const blogs = component.container.querySelectorAll('blog')
+    const blogs = component.container.querySelectorAll('.blog')
     expect(blogs.length).toBe(0)
+  })
+
+  test('if user is logged, blogs are rendered', async () => {
+    const user = {
+      username: 'tester',
+      token: '1231231214',
+      name: 'Donald Tester'
+    }
+
+    localStorage.setItem('loggedBlogAppUser', JSON.stringify(user))
+
+    const component = render(<App />)
+
+    await waitForElement(() => component.container.querySelector('.blog'))
+
+    const blogs = component.container.querySelectorAll('.blog')
+    expect(blogs.length).toBe(2)
   })
 })
