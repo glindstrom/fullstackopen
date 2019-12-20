@@ -4,15 +4,15 @@ const BlogForm = props => {
   return (
     <form onSubmit={props.addBlog}>
       <div>
-        title: <input onChange={props.handleTitleChange} value={props.title} />
+        title: <input {...props.title} />
       </div>
       <div>
         author:
-        <input onChange={props.handleAuthorChange} value={props.author} />
+        <input {...props.author} />
       </div>
       <div>
         url:
-        <input onChange={props.handleUrlChange} value={props.url} />
+        <input {...props.url} />
       </div>
       <div>
         <button type="submit">create</button>
