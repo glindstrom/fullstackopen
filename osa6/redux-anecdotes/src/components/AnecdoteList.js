@@ -6,7 +6,7 @@ import { addVote } from '../reducers/anecdoteReducer'
 const AnecdoteList = ({ store }) => {
   return (
     <div>
-      {store.getState().map(anecdote => (
+      {store.getState().anecdotes.map(anecdote => (
         <Anecdote
           key={anecdote.id}
           anecdote={anecdote}
