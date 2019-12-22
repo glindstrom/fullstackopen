@@ -2,15 +2,23 @@ const reducer = (state = 'notification', action) => {
   switch (action.type) {
     case 'SET_NOTIFICATION':
       return action.notification
+    case 'REMOVE_NOTIFICATION':
+      return null
     default:
       return state
   }
 }
 
-export const newNotification = notification => {
+export const setNotification = notification => {
   return {
-    type: 'SET_NOTIFIFACTION',
+    type: 'SET_NOTIFICATION',
     notification
+  }
+}
+
+export const removeNotification = () => {
+  return {
+    type: 'REMOVE_NOTIFICATION'
   }
 }
 
