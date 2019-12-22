@@ -15,10 +15,19 @@ const vote = (anecdote, store) => {
   }
 }
 
+const getAnecdotes = store => {
+  const anecdotes = store.getState().anecdotes
+  const filter = store.getState().filter
+  if (filter) {
+    return anecdotes.filter(anecdote => anecdote.content.includes(filter))
+  }
+  return anecdotes
+}
+
 const AnecdoteList = ({ store }) => {
   return (
     <div>
-      {store.getState().anecdotes.map(anecdote => (
+      {getAnecdotes(store).map(anecdote => (
         <Anecdote
           key={anecdote.id}
           anecdote={anecdote}
