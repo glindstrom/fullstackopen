@@ -16,10 +16,9 @@ const anecdotesToShow = ({ anecdotes, filter }) => {
 }
 
 const AnecdoteList = props => {
-  const vote = id => {
-    props.addVote(id)
-    props.setNotification('you voted')
-    setTimeout(() => props.removeNotification(), 5000)
+  const vote = anecdote => {
+    props.addVote(anecdote)
+    props.setNotification(`you voted '${anecdote.content}'`, 10)
   }
 
   return (
@@ -29,7 +28,7 @@ const AnecdoteList = props => {
           <div>{anecdote.content}</div>
           <div>
             has {anecdote.votes}
-            <button onClick={() => vote(anecdote.id)}>vote</button>
+            <button onClick={() => vote(anecdote)}>vote</button>
           </div>
         </div>
       ))}
